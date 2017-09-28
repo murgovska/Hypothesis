@@ -1,0 +1,76 @@
+@mixin icon {
+    width: 40px;
+    height: 40px;
+}
+
+.home-container {
+    font-family: medium-ui-sans-serif-text-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1.2em;
+    border-radius: 2.5px;
+    background-color: #f1f1f3;
+    .user {
+        &__username,
+        &__password,
+        &__comment {
+            font-weight: 400;
+            border-radius: 2px;
+            width: 50%;
+        }
+        &__details {
+            color: #5e0231;
+        }
+        &__logout {
+            margin: 0 5px;
+        }
+        .hypothesis__button {
+            background-color: #5E0131;
+            color: #f0f0f0;
+            width: 150px;
+            font-weight: 600;
+        }
+        .hypothesis__button-logout {
+            color: #5e0231;
+            font-weight: 600;
+            @include icon;
+        }
+    }
+    .header {
+        background-color: #f1f1f3;
+    }
+    .content {
+        background-color: #ffffff;
+    }
+    .comments {
+        .comment {
+            font-size: 0.75em;
+            &-date {
+                color: #5e0231;
+            }
+        }
+    }
+}
+
+table.comments th {
+    border: none;
+}
+
+table.comments td {
+    border: none;
+}
+
+table.comments tbody tr {
+    border-bottom: 0.5px solid #dbc3d0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #5e0231;
+    text-decoration: none;
+}
+
+.profile-picture{
+    height: 40px;
+    width: auto;
+}

@@ -1,0 +1,44 @@
+<div class="home-container">
+    <div class="row header">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 form-group user">
+            <span class="user__details">
+          <img src="{{currentUser.avatar_url}}" class="img-thumbnail profile-picture">
+          {{currentUser.name}}
+          </span>
+            <span class="user__details pull-right text-right">
+          <button class="btn hypothesis__button-logout" [routerLink]="['/login']"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></button>
+          </span>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-md-12 col-sm-12 col-md-offset-1 col-sm-offset-1 form-group user">
+            <form name="submitForm" (ngSubmit)="submitComment()" #submitForm="ngForm" novalidate>
+                <div class="form-group user">
+                    <label for="comment" class='user__comment'>Leave your comment here</label>
+                    <textarea class="form-control user__comment" [mention]="useroptions" [mentionConfig]="{triggerChar:'@',maxItems:10,labelKey:'name'}" [(ngModel)]="model.comment" name="comment" #comment="ngModel"></textarea>
+                </div>
+                <div class="form-group user">
+                    <button [disabled]="loading" class="btn hypothesis__button">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group comments" [hidden]="comments.length==0">
+            <table class='table table-responsive comments'>
+                <thead>
+                    <tr>
+                        <th colspan="2">User comments:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comment of comments" class='comment'>
+                        <td> <img class="img-thumbnail profile-picture" src="{{currentUser.avatar_url}}"> {{comment.username}}: {{comment.comment.replace('@', '')}} </td>
+                        <td class='pull-right comment-date'><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> {{comment.time}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 form-group text-center" [hidden]="comments.length>0">
+            <p>Explore hypothes.is, start communicating in a different way</p>
+        </div>
+    </div>
+</div>
